@@ -1,1 +1,1 @@
-# XManagementSystem
+# VocabularyStudyManagementSystem
