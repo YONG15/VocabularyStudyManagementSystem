@@ -15,7 +15,7 @@ public class MenuManager {
 			System.out.println(" 4. View vocabulary");
 			System.out.println(" 5. Show a menu");
 			System.out.println(" 6. Exit");
-			System.out.println("Select one number between 1 - 6:");
+			System.out.print("Select one number between 1 - 6:");
 			num = input.nextInt();
 			if (num == 1) {
 				addVoca();
@@ -34,7 +34,7 @@ public class MenuManager {
 			}
 		}
 	}
-	
+
 	public static void addVoca() {
 		Scanner input = new Scanner(System.in);
 		System.out.print("Please enter a vocabulary:");
@@ -43,13 +43,13 @@ public class MenuManager {
 		String meaning = input.nextLine();
 		System.out.print("Please enter an example sentence:");
 		String example = input.nextLine();
-		System.out.print("Please enter the meaning of the example sentence");
+		System.out.print("Please enter the meaning of the example sentence:");
 		String meaningOfTheExample = input.nextLine();
-		System.out.println("vocabulary"+voca);
-		System.out.println("meaning of the vocabulary"+meaning);
-		System.out.println("example sentence"+example);
-		System.out.println("meaning of the example sentence"+meaningOfTheExample);
-		
+		System.out.println("vocabulary: "+voca);
+		System.out.println("meaning of the vocabulary: "+meaning);
+		System.out.println("example sentence: "+example);
+		System.out.println("meaning of the example sentence: "+meaningOfTheExample);
+
 	}
 	public static void deleteVoca() {
 		Scanner input = new Scanner(System.in);
