@@ -29,7 +29,7 @@ public class VocabularyManager {
 			System.out.println("the vocabulary has not been resistered");
 			return;
 		}
-		if (vocabulary.voca == voca) {
+		if (vocabulary.voca.equals(voca)) {
 			vocabulary = null;
 			System.out.println("the vocabulary is deleted");
 		}
@@ -37,7 +37,7 @@ public class VocabularyManager {
 	public void editVoca() {
 		System.out.print("Please enter a vocabulary:");
 		String voca = input.nextLine();
-		if (vocabulary.voca == voca) {
+		if (vocabulary.voca.equals(voca)) {
 			int num = -1;
 			while(num != 5) {
 				System.out.println("** Vocabulary Info Edit Menu **");
@@ -47,7 +47,9 @@ public class VocabularyManager {
 				System.out.println(" 4. Edit meaning of the example sentence");
 				System.out.println(" 5. Exit");
 				System.out.print("Select one number between 1 - 5:");
-				num = input.nextInt();
+				num = Integer.parseInt(input.nextLine());
+
+
 				if (num == 1) {
 					System.out.print("Please enter a vocabulary:");
 					vocabulary.voca = input.nextLine();
@@ -73,7 +75,7 @@ public class VocabularyManager {
 	public void viewVoca() {
 		System.out.print("Please enter a vocabulary:");
 		String voca = input.nextLine();
-		if (vocabulary.voca == voca) {
+		if (vocabulary.voca.equals(voca)) {
 			vocabulary.prinitInfo();
 		}
 	}

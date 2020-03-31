@@ -18,7 +18,8 @@ public class MenuManager {
 			System.out.println(" 4. View vocabulary");
 			System.out.println(" 5. Exit");
 			System.out.print("Select one number between 1 - 5:");
-			num = input.nextInt();
+			num = Integer.parseInt(input.nextLine());
+
 			if (num == 1) {
 				vocabularyManager.addVoca();
 			}
