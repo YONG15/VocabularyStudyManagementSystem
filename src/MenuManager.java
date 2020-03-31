@@ -3,10 +3,10 @@ import java.util.Scanner;
 public class MenuManager {
 
 	public static void main(String[] args) {
-		
+
 		Scanner input = new Scanner(System.in);
 		VocabularyManager vocabularyManager = new VocabularyManager(input);
-		
+
 		int num = -1;
 
 
