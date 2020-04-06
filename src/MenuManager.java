@@ -15,7 +15,7 @@ public class MenuManager {
 			System.out.println(" 1. Add vocabulary");
 			System.out.println(" 2. Delete vocabulary");
 			System.out.println(" 3. Edit vocabulary");
-			System.out.println(" 4. View vocabulary");
+			System.out.println(" 4. View vocabularies");
 			System.out.println(" 5. Exit");
 			System.out.print("Select one number between 1 - 5:");
 			num = Integer.parseInt(input.nextLine());
@@ -30,7 +30,7 @@ public class MenuManager {
 				vocabularyManager.editVoca();
 			}
 			else if(num == 4) {
-				vocabularyManager.viewVoca();
+				vocabularyManager.viewVocabularies();
 			}
 			else {
 				continue;
