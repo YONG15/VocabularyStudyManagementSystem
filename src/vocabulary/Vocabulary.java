@@ -10,6 +10,10 @@ public class Vocabulary {
 	protected String meaningOfTheExample;
 
 	public Vocabulary(){}
+	
+	public Vocabulary(VocabularyKind kind){
+		this.kind = kind;
+	}
 
 	public Vocabulary(String voca,String meaning,String example,String meaningOfTheExample){
 		this.voca=voca;
@@ -21,6 +25,14 @@ public class Vocabulary {
 	public Vocabulary(String voca,String meaning){
 		this.voca=voca;
 		this.meaning=meaning;
+	}
+	
+	public Vocabulary(VocabularyKind kind, String voca,String meaning,String example,String meaningOfTheExample){
+		this.kind = kind;
+		this.voca=voca;
+		this.meaning=meaning;
+		this.example=example;
+		this.meaningOfTheExample=meaningOfTheExample;
 	}
 
 	public VocabularyKind getKind() {

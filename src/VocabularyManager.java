@@ -57,7 +57,7 @@ public class VocabularyManager {
 				break;
 			}
 			else {
-				System.out.print("Select num for Vocabulary Kind between 1 and 2:");
+				System.out.print("Select num for Vocabulary Kind between 1 and 5:");
 			}
 		}
 	}
@@ -128,8 +128,6 @@ public class VocabularyManager {
 		}
 	}
 	public void viewVocabularies() {
-		//		System.out.print("Please enter a vocabulary:");
-		//		String voca = input.nextLine();
 		System.out.println("# of registered vocabularies:" + vocabularies.size());
 		for (int i = 0; i<vocabularies.size(); i++) {
 			vocabularies.get(i).prinitInfo();
