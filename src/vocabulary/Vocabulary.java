@@ -2,7 +2,7 @@ package vocabulary;
 
 import java.util.Scanner;
 
-public class Vocabulary {
+public abstract class Vocabulary implements VocabularyInput{
 	protected VocabularyKind kind = VocabularyKind.Noun;
 	protected String voca;
 	protected String meaning;
@@ -10,7 +10,7 @@ public class Vocabulary {
 	protected String meaningOfTheExample;
 
 	public Vocabulary(){}
-	
+
 	public Vocabulary(VocabularyKind kind){
 		this.kind = kind;
 	}
@@ -26,7 +26,7 @@ public class Vocabulary {
 		this.voca=voca;
 		this.meaning=meaning;
 	}
-	
+
 	public Vocabulary(VocabularyKind kind, String voca,String meaning,String example,String meaningOfTheExample){
 		this.kind = kind;
 		this.voca=voca;
@@ -75,29 +75,35 @@ public class Vocabulary {
 		this.meaningOfTheExample = meaningOfTheExample;
 	}
 
-	public void prinitInfo() {
-		System.out.println("Kind:"+kind+"\rVocabulary:"+ voca +" \rMeaning:"+ meaning +" \rExample:"+ example +" \rMeaning of the example:"+ meaningOfTheExample );
+	public abstract void prinitInfo();
+
+	public void setVoca(Scanner input) {
+		System.out.print("Please enter a vocabulary:");
+		String voca = input.nextLine();
+		this.setVoca(voca);
+	}
+
+	public void setMeaning(Scanner input) {
+		System.out.print("Please enter the meaning of the vocabulary:");
+		String meaning = input.nextLine();
+		this.setMeaning(meaning);
+	}
+
+	public void setExample(Scanner input) {
+		System.out.print("Please enter an example sentence:");
+		String example = input.nextLine();
+		this.setExample(example);
+	}
+
+	public void setMeaningOfTheExample(Scanner input) {
+		System.out.print("Please enter the meaning of the example sentence:");
+		String meaningOfTheExample = input.nextLine();
+		this.setMeaningOfTheExample(meaningOfTheExample);
 	}
 
 	public void printEng() {
 		System.out.println("Vocabulary:"+ voca +" \rExample:"+ example);
 	}
-	public void getUserInput(Scanner input) {
-		System.out.print("Please enter a vocabulary:");
-		String voca = input.nextLine();
-		this.setVoca(voca);
 
-		System.out.print("Please enter the meaning of the vocabulary:");
-		String meaning = input.nextLine();
-		this.setMeaning(meaning);
-
-		System.out.print("Please enter an example sentence:");
-		String example = input.nextLine();
-		this.setExample(example);
-
-		System.out.print("Please enter the meaning of the example sentence:");
-		String meaningOfTheExample = input.nextLine();
-		this.setMeaningOfTheExample(meaningOfTheExample);
-	}
 
 }

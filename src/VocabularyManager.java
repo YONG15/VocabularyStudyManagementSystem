@@ -4,12 +4,14 @@ import java.util.Scanner;
 import vocabulary.Adjective;
 import vocabulary.Adverb;
 import vocabulary.Idiom;
+import vocabulary.Noun;
 import vocabulary.Verb;
 import vocabulary.Vocabulary;
+import vocabulary.VocabularyInput;
 import vocabulary.VocabularyKind;
 
 public class VocabularyManager {
-	ArrayList<Vocabulary> vocabularies = new ArrayList<Vocabulary>();
+	ArrayList<VocabularyInput> vocabularies = new ArrayList<VocabularyInput>();
 	Scanner input;
 	VocabularyManager(Scanner input){
 		this.input = input;
@@ -17,7 +19,7 @@ public class VocabularyManager {
 
 	public void addVoca() {
 		int kind = 0;
-		Vocabulary vocabulary;
+		VocabularyInput vocabularyInput;
 		while(kind != 1 && kind !=2) {
 			System.out.println("1 for Noun");
 			System.out.println("2 for Verb");
@@ -27,33 +29,33 @@ public class VocabularyManager {
 			System.out.print("Select num for Vocabulary Kind between 1 and 5:");
 			kind = Integer.parseInt(input.nextLine());
 			if(kind == 1) {
-				vocabulary = new Vocabulary();
-				vocabulary.getUserInput(input);
-				vocabularies.add(vocabulary);
+				vocabularyInput = new Noun(VocabularyKind.Noun);
+				vocabularyInput.getUserInput(input);
+				vocabularies.add(vocabularyInput);
 				break;
 			}
 			else if(kind == 2) {
-				vocabulary = new Verb();
-				vocabulary.getUserInput(input);
-				vocabularies.add(vocabulary);
+				vocabularyInput = new Verb(VocabularyKind.Verb);
+				vocabularyInput.getUserInput(input);
+				vocabularies.add(vocabularyInput);
 				break;
 			}
 			else if(kind == 3) {
-				vocabulary = new Adjective();
-				vocabulary.getUserInput(input);
-				vocabularies.add(vocabulary);
+				vocabularyInput = new Adjective(VocabularyKind.Adjective);
+				vocabularyInput.getUserInput(input);
+				vocabularies.add(vocabularyInput);
 				break;
 			}
 			else if(kind == 4) {
-				vocabulary = new Adverb();
-				vocabulary.getUserInput(input);
-				vocabularies.add(vocabulary);
+				vocabularyInput = new Adverb(VocabularyKind.Adverb);
+				vocabularyInput.getUserInput(input);
+				vocabularies.add(vocabularyInput);
 				break;
 			}
 			else if(kind == 5) {
-				vocabulary = new Idiom();
-				vocabulary.getUserInput(input);
-				vocabularies.add(vocabulary);
+				vocabularyInput = new Idiom(VocabularyKind.Idiom);
+				vocabularyInput.getUserInput(input);
+				vocabularies.add(vocabularyInput);
 				break;
 			}
 			else {
@@ -64,6 +66,18 @@ public class VocabularyManager {
 	public void deleteVoca() {
 		System.out.print("Please enter a vocabulary:");
 		String voca = input.nextLine();
+		int index = findIndex(voca);
+		for (int i = 0; i<vocabularies.size(); i++) {
+			if (vocabularies.get(i).getVoca().equals(voca)) {
+				index = i;
+				break;
+			}
+		}
+		removefromVocabularies(index, voca);
+
+	}
+
+	public int findIndex(String voca) {
 		int index = -1;
 		for (int i = 0; i<vocabularies.size(); i++) {
 			if (vocabularies.get(i).getVoca().equals(voca)) {
@@ -71,55 +85,46 @@ public class VocabularyManager {
 				break;
 			}
 		}
+		return index;
+	}
 
+	public int removefromVocabularies(int index, String voca) {
 		if(index >= 0) {
 			vocabularies.remove(index);
 			System.out.println("the vocabulary '" + voca + "' is deleted");
+			return 1;
 		}
 		else {
 			System.out.println("the vocabulary has not been resistered");
-			return;
+			return -1;
 		}
 	}
+
 	public void editVoca() {
 		System.out.print("Please enter a vocabulary:");
 		String vocabul = input.nextLine();
 		for (int i = 0; i<vocabularies.size(); i++) {
-			Vocabulary vocabulary = vocabularies.get(i);
+			VocabularyInput vocabulary = vocabularies.get(i);
 			if (vocabulary.getVoca().equals(vocabul)) {
 				int num = -1;
 				while(num != 5) {
-					System.out.println("** Vocabulary Info Edit Menu **");
-					System.out.println(" 1. Edit vocabulary");
-					System.out.println(" 2. Edit meaning of the vocabulary");
-					System.out.println(" 3. Edit example sentence");
-					System.out.println(" 4. Edit meaning of the example sentence");
-					System.out.println(" 5. Exit");
-					System.out.print("Select one number between 1 - 5:");
+					showEditMenu();
 					num = Integer.parseInt(input.nextLine());
 
-
-					if (num == 1) {
-						System.out.print("Please enter a vocabulary:");
-						String voca = input.nextLine();
-						vocabulary.setVoca(voca);
-					}
-					else if(num == 2) {
-						System.out.print("Please enter the meaning of the vocabulary:");
-						String meaning = input.nextLine();
-						vocabulary.setMeaning(meaning);
-					}
-					else if(num == 3) {
-						System.out.print("Please enter an example sentence:");
-						String example = input.nextLine();
-						vocabulary.setExample(example);
-					}
-					else if(num == 4) {
-						System.out.print("Please enter the meaning of the example sentence:");
-						String meaningOfTheExample = input.nextLine();
-						vocabulary.setMeaningOfTheExample(meaningOfTheExample);
-					}
-					else {
+					switch(num) {
+					case 1:
+						vocabulary.setVoca(input);
+						break;
+					case 2:
+						vocabulary.setMeaning(input);
+						break;
+					case 3:
+						vocabulary.setExample(input);
+						break;
+					case 4:
+						vocabulary.setMeaningOfTheExample(input);
+						break;
+					default:
 						continue;
 					}
 				}
@@ -133,6 +138,18 @@ public class VocabularyManager {
 			vocabularies.get(i).prinitInfo();
 			System.out.println();
 		}
+	}
+
+
+
+	public void showEditMenu() {
+		System.out.println("** Vocabulary Info Edit Menu **");
+		System.out.println(" 1. Edit vocabulary");
+		System.out.println(" 2. Edit meaning of the vocabulary");
+		System.out.println(" 3. Edit example sentence");
+		System.out.println(" 4. Edit meaning of the example sentence");
+		System.out.println(" 5. Exit");
+		System.out.print("Select one number between 1 - 5:");
 	}
 }
 
