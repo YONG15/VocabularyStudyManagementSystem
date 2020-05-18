@@ -20,7 +20,7 @@ public class VocabularyManager {
 	public void addVoca() {
 		int kind = 0;
 		VocabularyInput vocabularyInput;
-		while(kind != 1 && kind !=2) {
+		while(kind < 1 || kind > 5) {
 			try {
 				System.out.println("1 for Noun");
 				System.out.println("2 for Verb");
@@ -126,6 +126,8 @@ public class VocabularyManager {
 							break;
 						case 4:
 							vocabulary.setMeaningOfTheExample(input);
+							break;
+						case 5:
 							break;
 						default:
 							System.out.println("Please put an integer between 1 and 5!");

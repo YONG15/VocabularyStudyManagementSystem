@@ -33,6 +33,8 @@ public class MenuManager {
 				case 4:
 					vocabularyManager.viewVocabularies();
 					break;
+				case 5:
+					break;
 				default:
 					System.out.println("Please put an integer between 1 and 5!");
 					continue;
