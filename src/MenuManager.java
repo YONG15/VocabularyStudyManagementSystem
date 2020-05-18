@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuManager {
@@ -7,28 +8,39 @@ public class MenuManager {
 		Scanner input = new Scanner(System.in);
 		VocabularyManager vocabularyManager = new VocabularyManager(input);
 
+		selectMenu(input, vocabularyManager);
+	}
+
+	public static void selectMenu(Scanner input, VocabularyManager vocabularyManager) {
 		int num = -1;
 
 
 		while(num != 5) {
-			showMenu();
-			num = Integer.parseInt(input.nextLine());
+			try {
+				showMenu();
+				num = Integer.parseInt(input.nextLine());
 
-			switch(num){
-			case 1:
-				vocabularyManager.addVoca();
-				break;
-			case 2:
-				vocabularyManager.deleteVoca();
-				break;
-			case 3:
-				vocabularyManager.editVoca();
-				break;
-			case 4:
-				vocabularyManager.viewVocabularies();
-				break;
-			default:
-				continue;
+				switch(num){
+				case 1:
+					vocabularyManager.addVoca();
+					break;
+				case 2:
+					vocabularyManager.deleteVoca();
+					break;
+				case 3:
+					vocabularyManager.editVoca();
+					break;
+				case 4:
+					vocabularyManager.viewVocabularies();
+					break;
+				default:
+					System.out.println("Please put an integer between 1 and 5!");
+					continue;
+				}
+			}
+			catch(NumberFormatException e){
+				System.out.println("Please put an integer between 1 and 5!");
+				num = -1;
 			}
 		}
 	}

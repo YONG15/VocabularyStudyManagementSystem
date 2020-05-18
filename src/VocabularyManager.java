@@ -21,45 +21,47 @@ public class VocabularyManager {
 		int kind = 0;
 		VocabularyInput vocabularyInput;
 		while(kind != 1 && kind !=2) {
-			System.out.println("1 for Noun");
-			System.out.println("2 for Verb");
-			System.out.println("3 for Adjective");
-			System.out.println("4 for Adverb");
-			System.out.println("5 for Idiom");
-			System.out.print("Select num for Vocabulary Kind between 1 and 5:");
-			kind = Integer.parseInt(input.nextLine());
-			if(kind == 1) {
-				vocabularyInput = new Noun(VocabularyKind.Noun);
-				vocabularyInput.getUserInput(input);
-				vocabularies.add(vocabularyInput);
-				break;
-			}
-			else if(kind == 2) {
-				vocabularyInput = new Verb(VocabularyKind.Verb);
-				vocabularyInput.getUserInput(input);
-				vocabularies.add(vocabularyInput);
-				break;
-			}
-			else if(kind == 3) {
-				vocabularyInput = new Adjective(VocabularyKind.Adjective);
-				vocabularyInput.getUserInput(input);
-				vocabularies.add(vocabularyInput);
-				break;
-			}
-			else if(kind == 4) {
-				vocabularyInput = new Adverb(VocabularyKind.Adverb);
-				vocabularyInput.getUserInput(input);
-				vocabularies.add(vocabularyInput);
-				break;
-			}
-			else if(kind == 5) {
-				vocabularyInput = new Idiom(VocabularyKind.Idiom);
-				vocabularyInput.getUserInput(input);
-				vocabularies.add(vocabularyInput);
-				break;
-			}
-			else {
+			try {
+				System.out.println("1 for Noun");
+				System.out.println("2 for Verb");
+				System.out.println("3 for Adjective");
+				System.out.println("4 for Adverb");
+				System.out.println("5 for Idiom");
 				System.out.print("Select num for Vocabulary Kind between 1 and 5:");
+				kind = Integer.parseInt(input.nextLine());
+				switch(kind) {
+				case 1:
+					vocabularyInput = new Noun(VocabularyKind.Noun);
+					vocabularyInput.getUserInput(input);
+					vocabularies.add(vocabularyInput);
+					break;
+				case 2:
+					vocabularyInput = new Verb(VocabularyKind.Verb);
+					vocabularyInput.getUserInput(input);
+					vocabularies.add(vocabularyInput);
+					break;				
+				case 3:
+					vocabularyInput = new Adjective(VocabularyKind.Adjective);
+					vocabularyInput.getUserInput(input);
+					vocabularies.add(vocabularyInput);
+					break;				
+				case 4:
+					vocabularyInput = new Adverb(VocabularyKind.Adverb);
+					vocabularyInput.getUserInput(input);
+					vocabularies.add(vocabularyInput);
+					break;				
+				case 5:
+					vocabularyInput = new Idiom(VocabularyKind.Idiom);
+					vocabularyInput.getUserInput(input);
+					vocabularies.add(vocabularyInput);
+					break;				
+				default:
+					System.out.println("Please put an integer between 1 and 5!");
+				}
+			}
+			catch(NumberFormatException e) {
+				System.out.println("Please put an integer between 1 and 5!");
+				kind = -1;
 			}
 		}
 	}
@@ -108,24 +110,31 @@ public class VocabularyManager {
 			if (vocabulary.getVoca().equals(vocabul)) {
 				int num = -1;
 				while(num != 5) {
-					showEditMenu();
-					num = Integer.parseInt(input.nextLine());
+					try {
+						showEditMenu();
+						num = Integer.parseInt(input.nextLine());
 
-					switch(num) {
-					case 1:
-						vocabulary.setVoca(input);
-						break;
-					case 2:
-						vocabulary.setMeaning(input);
-						break;
-					case 3:
-						vocabulary.setExample(input);
-						break;
-					case 4:
-						vocabulary.setMeaningOfTheExample(input);
-						break;
-					default:
-						continue;
+						switch(num) {
+						case 1:
+							vocabulary.setVoca(input);
+							break;
+						case 2:
+							vocabulary.setMeaning(input);
+							break;
+						case 3:
+							vocabulary.setExample(input);
+							break;
+						case 4:
+							vocabulary.setMeaningOfTheExample(input);
+							break;
+						default:
+							System.out.println("Please put an integer between 1 and 5!");
+							continue;
+						}
+					}
+					catch(NumberFormatException e) {
+						System.out.println("Please put an integer between 1 and 5!");
+						num = -1;
 					}
 				}
 				break;
