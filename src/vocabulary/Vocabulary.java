@@ -1,8 +1,13 @@
 package vocabulary;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public abstract class Vocabulary implements VocabularyInput{
+public abstract class Vocabulary implements VocabularyInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2175606133997983142L;
 	protected VocabularyKind kind = VocabularyKind.Noun;
 	protected String voca;
 	protected String meaning;

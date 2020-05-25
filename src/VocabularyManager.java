@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -6,13 +7,17 @@ import vocabulary.Adverb;
 import vocabulary.Idiom;
 import vocabulary.Noun;
 import vocabulary.Verb;
-import vocabulary.Vocabulary;
 import vocabulary.VocabularyInput;
 import vocabulary.VocabularyKind;
 
-public class VocabularyManager {
+public class VocabularyManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2489010751605990761L;
+
 	ArrayList<VocabularyInput> vocabularies = new ArrayList<VocabularyInput>();
-	Scanner input;
+	transient Scanner input;
 	VocabularyManager(Scanner input){
 		this.input = input;
 	}
@@ -161,6 +166,9 @@ public class VocabularyManager {
 		System.out.println(" 4. Edit meaning of the example sentence");
 		System.out.println(" 5. Exit");
 		System.out.print("Select one number between 1 - 5:");
+	}
+	public void setScanner(Scanner input) {
+		this.input = input;
 	}
 }
 
