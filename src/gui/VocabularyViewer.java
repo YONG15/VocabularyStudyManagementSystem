@@ -3,13 +3,18 @@ package gui;
 import java.awt.ScrollPane;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class VocabularyViewer extends JFrame {
+public class VocabularyViewer extends JPanel {
+	
+	WindowFrame frame;
 
-	public VocabularyViewer() {
+	public VocabularyViewer(WindowFrame frame) {
+		this.frame = frame;
+		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Vocabulary");
 		model.addColumn("Meaning of the vocabulary");
@@ -20,14 +25,6 @@ public class VocabularyViewer extends JFrame {
 		JScrollPane sp = new JScrollPane(table);
 
 		this.add(sp);
-
-
-
-		this.setSize(300, 300);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-		this.setVisible(true);
 	}
 
 }
