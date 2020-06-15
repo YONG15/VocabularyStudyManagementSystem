@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public interface VocabularyInput {
 	public String getVoca();
+	public String getMeaning();
+	public String getExample();
+	public String getMeaningOfTheExample();
 	public void setVoca(String voca);
 	public void setMeaning(String meaning);
 	public void setExample(String example);

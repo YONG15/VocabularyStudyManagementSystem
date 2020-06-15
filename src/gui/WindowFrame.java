@@ -3,26 +3,33 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import manager.VocabularyManager;
+
 public class WindowFrame extends JFrame{
+
+	VocabularyManager vocabularyManager;
+
 	MenuSelection menuselection;
 	VocabularyAdder vocabularyadder;
 	VocabularyViewer vocabularyviewer;
-	
-	public WindowFrame() {
-		this.menuselection = new MenuSelection(this);
-		this.vocabularyadder = new VocabularyAdder(this);
-		this.vocabularyviewer = new VocabularyViewer(this);
-		
-		
+
+
+	public WindowFrame(VocabularyManager vocabularyManager) {
+		this.vocabularyManager = vocabularyManager;
+		menuselection = new MenuSelection(this);
+		vocabularyadder = new VocabularyAdder(this);
+		vocabularyviewer = new VocabularyViewer(this, this.vocabularyManager);
+
+
 		this.setSize(500, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
+
+
 		this.setupPanel(menuselection);
-		
+
 		this.setVisible(true);
 	}
-	
+
 	public void setupPanel(JPanel panel) {
 		this.getContentPane().removeAll();
 		this.getContentPane().add(panel);
@@ -53,6 +60,6 @@ public class WindowFrame extends JFrame{
 	public void setVocabularyviewer(VocabularyViewer vocabularyviewer) {
 		this.vocabularyviewer = vocabularyviewer;
 	}
-	
+
 
 }

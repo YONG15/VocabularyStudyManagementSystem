@@ -1,20 +1,19 @@
 package gui;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 public class VocabularyAdder extends JPanel {
-	
+
 	WindowFrame frame;
-	
+
 	public VocabularyAdder(WindowFrame frame) {
 		this.frame = frame;
-		
-		
+
+
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
 
@@ -47,7 +46,7 @@ public class VocabularyAdder extends JPanel {
 
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 
-		
+
 
 		this.add(panel);
 		this.setVisible(true);
